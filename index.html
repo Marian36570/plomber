@@ -3,87 +3,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Artisan Rénovation & Plomberie Paris</title>
+    <title>Artisan Pro Paris | Plomberie & Rénovation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #1a73e8;
-            --dark: #202124;
+            --primary: #0056b3;
+            --accent: #ffcc00;
             --success: #25D366;
+            --text: #ffffff;
         }
         body { 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-            margin: 0; padding: 0; background-color: #f8f9fa; color: var(--dark); 
-            line-height: 1.6;
+            font-family: 'Montserrat', sans-serif; 
+            margin: 0; padding: 0; 
+            background-color: #f0f2f5; 
+            color: #333; 
         }
         header { 
-            background: linear-gradient(135deg, #0044cc, #0077ff); 
-            color: white; padding: 60px 20px; text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                        url('https://images.unsplash.com/photo-1581244277943-fe4a9c777189?auto=format&fit=crop&q=80&w=1000'); 
+            background-size: cover;
+            background-position: center;
+            color: white; 
+            padding: 80px 20px; 
+            text-align: center;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
         }
-        .container { max-width: 500px; margin: -40px auto 20px; padding: 0 15px; }
+        .container { max-width: 500px; margin: -60px auto 40px; padding: 0 15px; }
         .card { 
-            background: white; padding: 25px; border-radius: 15px; 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1); margin-bottom: 20px;
+            background: white; 
+            padding: 30px; 
+            border-radius: 20px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
+            margin-bottom: 25px;
+            border-top: 5px solid var(--primary);
         }
-        h1 { margin: 0; font-size: 28px; letter-spacing: 1px; }
-        h3 { color: var(--primary); border-bottom: 2px solid #f0f0f0; padding-bottom: 10px; }
-        .services-list { text-align: left; list-style: none; padding: 0; }
-        .services-list li { padding: 8px 0; border-bottom: 1px solid #eee; }
-        .services-list li::before { content: "✅ "; }
-        
+        h1 { margin: 0; font-size: 32px; text-transform: uppercase; letter-spacing: 2px; }
+        .subtitle { font-size: 18px; opacity: 0.9; margin-top: 10px; }
+        .languages { 
+            display: flex; justify-content: center; gap: 15px; 
+            margin-bottom: 20px; background: rgba(255,255,255,0.8);
+            padding: 10px; border-radius: 50px; backdrop-filter: blur(5px);
+        }
+        .lang-item { display: flex; align-items: center; gap: 5px; font-weight: bold; font-size: 14px; }
+        .services-list { text-align: left; list-style: none; padding: 0; margin: 20px 0; }
+        .services-list li { padding: 12px 0; border-bottom: 1px solid #eee; display: flex; align-items: center; }
+        .services-list li::before { content: "🛠️"; margin-right: 10px; font-size: 18px; }
         .btn-whatsapp { 
             display: flex; align-items: center; justify-content: center;
-            background: var(--success); color: white; padding: 18px; 
-            text-decoration: none; border-radius: 50px; font-weight: bold; 
-            font-size: 20px; transition: transform 0.2s;
-            box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
+            background: var(--success); color: white; padding: 20px; 
+            text-decoration: none; border-radius: 15px; font-weight: bold; 
+            font-size: 20px; transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
         }
-        .btn-whatsapp:active { transform: scale(0.95); }
-        
-        .lang-switch { font-size: 14px; color: #666; margin-bottom: 15px; }
-        footer { padding: 40px 20px; font-size: 13px; color: #999; }
+        .btn-whatsapp:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(37, 211, 102, 0.5); }
+        footer { text-align: center; padding: 20px; color: #888; font-size: 12px; }
+        .badge { background: var(--primary); color: white; padding: 5px 12px; border-radius: 5px; font-size: 12px; margin-bottom: 10px; display: inline-block; }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>ARTISAN RÉNOVATION</h1>
-    <p>Plomberie • Carrelage • Bricolage</p>
-    <p>📍 Paris et Île-de-France</p>
+    <h1>Artisan Pro</h1>
+    <div class="subtitle">Plomberie & Rénovation Salle de Bain</div>
 </header>
 
 <div class="container">
-    <div class="lang-switch">
-        🇫🇷 Je parle français (par écrit) | 🇺🇦 Розмовляю українською
+    <div class="languages">
+        <div class="lang-item">🇫🇷 <span>FR</span></div>
+        <div class="lang-item">🇺🇦 <span>UA</span></div>
+        <div class="lang-item">🇵🇱 <span>PL</span></div>
     </div>
 
     <div class="card">
-        <h3>Mes Services</h3>
+        <div class="badge">SERVICES À PARIS</div>
+        <h3>Mes Prestations</h3>
         <ul class="services-list">
-            <li><strong>Plomberie :</strong> Fuites, mitigeurs, WC, éviers</li>
-            <li><strong>Carrelage :</strong> Pose propre et précise</li>
-            <li><strong>Salle de bain :</strong> Rénovation complète</li>
-            <li><strong>Montage :</strong> Meubles IKEA, cuisine, étagères</li>
-            <li><strong>Électricité :</strong> Prises, luminaires</li>
+            <li><strong>Plomberie :</strong> Dépannage, fuites, WC</li>
+            <li><strong>Sanitaire :</strong> Pose de mitigeurs & éviers</li>
+            <li><strong>Carrelage :</strong> Rénovation de douche</li>
+            <li><strong>Montage :</strong> Meubles & cuisine</li>
         </ul>
+        <p style="font-size: 14px; color: #666;">Travail soigné, prix transparents.</p>
     </div>
 
-    <div class="card">
-        <h3>Qualité & Garantie</h3>
-        <p>Travail professionnel, propre et rapide. Devis gratuit sur photo.</p>
+    <div class="card" style="text-align: center;">
+        <p><strong>Besoin d'un devis gratuit ?</strong><br>Envoyez-moi une photo de votre problème via WhatsApp.</p>
+        <a href="https://wa.me/33782006584" class="btn-whatsapp">
+            💬 WhatsApp Message
+        </a>
     </div>
-
-    <a href="https://wa.me/ВАШ_НОМЕР_ТУТ" class="btn-whatsapp">
-        💬 Contact via WhatsApp
-    </a>
-    
-    <p style="margin-top: 15px; font-size: 14px; color: #666;">
-        (Réponse rapide par message)
-    </p>
 </div>
 
 <footer>
-    &copy; 2026 Artisan Pro Paris<br>
-    Spécialiste en dépannage et rénovation
+    &copy; 2026 Expert Rénovation Paris. Tous droits réservés.
 </footer>
 
 </body>
