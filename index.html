@@ -6,54 +6,50 @@
     <title>Artisan Pro Paris | Plomberie & Rénovation</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        :root { --primary: #0056b3; --accent: #ffcc00; --success: #25D366; --text: #ffffff; }
-        body { font-family: 'Montserrat', sans-serif; margin: 0; padding: 0; background-color: #f0f2f5; color: #333; overflow-x: hidden; }
+        :root { --primary: #0056b3; --accent: #ffcc00; --success: #25D366; }
+        body { font-family: 'Montserrat', sans-serif; margin: 0; padding: 0; background-color: #f0f2f5; color: #333; }
         
         header { 
             background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), 
                         url('https://images.unsplash.com/photo-1581244277943-fe4a9c777189?auto=format&fit=crop&q=80&w=1000'); 
             background-size: cover; background-position: center;
-            color: white; padding: 100px 20px; text-align: center;
+            color: white; padding: 80px 20px; text-align: center;
             clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
         }
 
-        .container { max-width: 500px; margin: -60px auto 40px; padding: 0 15px; }
+        .container { max-width: 500px; margin: -50px auto 40px; padding: 0 15px; }
 
-        /* Перемикач мов */
         .lang-picker { 
             display: flex; justify-content: center; gap: 10px; margin-bottom: 25px; 
             background: white; padding: 10px; border-radius: 50px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
         .lang-btn { 
-            cursor: pointer; border: none; background: none; font-size: 20px; 
-            padding: 5px 12px; border-radius: 20px; transition: 0.3s; opacity: 0.5;
+            cursor: pointer; border: 1px solid #eee; background: white; font-size: 14px; 
+            padding: 8px 15px; border-radius: 20px; transition: 0.3s; font-weight: bold;
         }
-        .lang-btn.active { background: #eef3ff; opacity: 1; transform: scale(1.1); }
+        .lang-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
 
         .card { 
-            background: white; padding: 30px; border-radius: 20px; 
+            background: white; padding: 25px; border-radius: 20px; 
             box-shadow: 0 10px 30px rgba(0,0,0,0.1); margin-bottom: 25px;
-            animation: slideUp 0.6s ease-out;
         }
-        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
         h1 { margin: 0; font-size: 28px; text-transform: uppercase; letter-spacing: 2px; }
         .subtitle { font-size: 16px; opacity: 0.9; margin-top: 10px; }
 
         .services-list { text-align: left; list-style: none; padding: 0; margin: 20px 0; }
-        .services-list li { padding: 12px 0; border-bottom: 1px solid #eee; display: flex; align-items: center; }
-        .services-list li::before { content: "🔹"; margin-right: 10px; }
+        .services-list li { padding: 10px 0; border-bottom: 1px solid #eee; display: flex; align-items: center; }
+        .services-list li::before { content: "🛠️"; margin-right: 10px; }
 
-        .steps { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; text-align: center; font-size: 12px; margin-top: 20px; }
+        .steps { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; text-align: center; font-size: 12px; }
         .step-icon { font-size: 24px; display: block; margin-bottom: 5px; }
 
         .btn-whatsapp { 
             display: flex; align-items: center; justify-content: center;
             background: var(--success); color: white; padding: 20px; 
             text-decoration: none; border-radius: 15px; font-weight: bold; 
-            font-size: 18px; transition: all 0.3s; box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
+            font-size: 18px; box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
         }
-        .btn-whatsapp:hover { transform: translateY(-3px); }
 
         footer { text-align: center; padding: 20px; color: #888; font-size: 12px; }
     </style>
@@ -61,29 +57,33 @@
 <body>
 
 <header>
-    <h1 id="main-title">Artisan Pro</h1>
+    <h1>Artisan Pro</h1>
     <div class="subtitle" id="main-subtitle">Plomberie & Rénovation Salle de Bain</div>
 </header>
 
 <div class="container">
     <div class="lang-picker">
-        <button class="lang-btn active" onclick="setLang('fr')">🇫🇷 FR</button>
-        <button class="lang-btn" onclick="setLang('ua')">🇺🇦 UA</button>
-        <button class="lang-btn" onclick="setLang('pl')">🇵🇱 PL</button>
+        <button class="lang-btn active" id="btn-fr" onclick="setLang('fr')">🇫🇷 FR</button>
+        <button class="lang-btn" id="btn-ua" onclick="setLang('ua')">🇺🇦 UA</button>
+        <button class="lang-btn" id="btn-pl" onclick="setLang('pl')">🇵🇱 PL</button>
     </div>
 
     <div class="card">
         <h3 id="services-title">Mes Prestations</h3>
         <ul class="services-list" id="services-list">
-            </ul>
+            <li><strong>Plomberie (Fuites, WC)</strong></li>
+            <li><strong>Pose de carrelage</strong></li>
+            <li><strong>Rénovation complète</strong></li>
+            <li><strong>Montage meubles & cuisine</strong></li>
+        </ul>
     </div>
 
     <div class="card">
-        <h3 id="why-title">Pourquoi me choisir ?</h3>
+        <h3 id="why-title">Pourquoi moi ?</h3>
         <div class="steps">
             <div><span class="step-icon">⚡</span><span id="step-1">Rapide</span></div>
             <div><span class="step-icon">🧼</span><span id="step-2">Propre</span></div>
-            <div><span class="step-icon">🤝</span><span id="id-3">Prix Juste</span></div>
+            <div><span class="step-icon">🤝</span><span id="step-3">Prix Juste</span></div>
         </div>
     </div>
 
@@ -95,51 +95,52 @@
     </div>
 </div>
 
-<footer>
-    &copy; 2026 Expert Rénovation Paris
-</footer>
+<footer>&copy; 2026 Expert Rénovation Paris</footer>
 
 <script>
     const translations = {
         fr: {
             subtitle: "Plomberie & Rénovation Salle de Bain",
             servicesTitle: "Mes Prestations",
-            services: ["Dépannage plomberie", "Pose de carrelage", "Rénovation complète", "Montage meubles & cuisine"],
-            whyTitle: "Pourquoi me choisir ?",
+            services: ["Plomberie (Fuites, WC)", "Pose de carrelage", "Rénovation complète", "Montage meubles & cuisine"],
+            whyTitle: "Pourquoi moi ?",
             step1: "Rapide", step2: "Propre", step3: "Prix Juste",
-            contactText: "Besoin d'un devis gratuit ? Envoyez-moi une photo via WhatsApp.",
+            contactText: "Besoin d'un devis gratuit ? Envoyez-moi une photo du problème.",
             waBtn: "💬 WhatsApp Message"
         },
         ua: {
             subtitle: "Сантехніка та Ремонт Ванних Кімнат",
             servicesTitle: "Мої Послуги",
-            services: ["Сантехнічні роботи", "Укладання плитки", "Повний ремонт ванної", "Монтаж меблів та кухонь"],
-            whyTitle: "Чому варто обрати мене?",
+            services: ["Сантехніка (Витоки, WC)", "Укладання плитки", "Повний ремонт", "Монтаж меблів та кухонь"],
+            whyTitle: "Чому я?",
             step1: "Швидко", step2: "Чисто", step3: "Чесна ціна",
-            contactText: "Потрібна безкоштовна оцінка? Надішліть фото у WhatsApp.",
+            contactText: "Потрібна оцінка? Надішліть фото проблеми у WhatsApp.",
             waBtn: "💬 Написати у WhatsApp"
         },
         pl: {
             subtitle: "Hydraulika i Remonty Łazienek",
             servicesTitle: "Moje Usługi",
-            services: ["Usługi hydrauliczne", "Układanie płytek", "Kompletny remont łazienki", "Montaż mebli i kuchni"],
+            services: ["Hydraulika (Przecieki, WC)", "Układanie płytek", "Kompletny remont", "Montaż mebli i kuchni"],
             whyTitle: "Dlaczego ja?",
-            step1: "Szybko", step2: "Czysto", step3: "Uczciwa cena",
-            contactText: "Potrzebujesz darmowej wyceny? Wyślij zdjęcie na WhatsApp.",
+            step1: "Szybko", step2: "Czysto", step3: "Dobra cena",
+            contactText: "Darmowa wycena? Wyślij zdjęcie na WhatsApp.",
             waBtn: "💬 Napisz na WhatsApp"
         }
     };
 
     function setLang(lang) {
+        // Оновлюємо кнопки
         document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
-        event.target.classList.add('active');
+        document.getElementById('btn-' + lang).classList.add('active');
 
+        // Оновлюємо текст
         const t = translations[lang];
         document.getElementById('main-subtitle').innerText = t.subtitle;
         document.getElementById('services-title').innerText = t.servicesTitle;
         document.getElementById('why-title').innerText = t.whyTitle;
         document.getElementById('step-1').innerText = t.step1;
         document.getElementById('step-2').innerText = t.step2;
+        document.getElementById('step-3').innerText = t.step3;
         document.getElementById('contact-text').innerHTML = `<strong>${t.contactText}</strong>`;
         document.getElementById('wa-btn').innerText = t.waBtn;
 
@@ -151,9 +152,6 @@
             list.appendChild(li);
         });
     }
-
-    // Завантаження французької за замовчуванням
-    setLang('fr');
 </script>
 
 </body>
