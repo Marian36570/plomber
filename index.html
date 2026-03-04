@@ -6,64 +6,50 @@
     <title>Artisan Pro | Plomberie & Rénovation</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        :root { --primary: #0056b3; --success: #25D366; --accent: #ffcc00; --soft-blue: #eef3ff; }
+        :root { --primary: #0056b3; --success: #25D366; --accent: #ffcc00; }
         
         body { 
             font-family: 'Montserrat', sans-serif; margin: 0; padding: 0; 
-            background: linear-gradient(rgba(244, 247, 249, 0.94), rgba(244, 247, 249, 0.94)), 
-                        url('https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=1500');
-            background-attachment: fixed; background-size: cover; color: #333; 
+            background: #f4f7f9 url('https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=1500') no-repeat center center fixed;
+            background-size: cover; color: #333; 
         }
         
         header { 
-            background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), 
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
                         url('https://images.unsplash.com/photo-1581244277943-fe4a9c777189?auto=format&fit=crop&q=80&w=1000'); 
-            background-size: cover; background-position: center; color: white; padding: 50px 20px 70px; text-align: center;
+            background-size: cover; background-position: center; color: white; padding: 50px 20px; text-align: center;
             clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
         }
 
-        .container { max-width: 500px; margin: 0 auto 30px; padding: 0 15px; position: relative; z-index: 2; }
+        .container { max-width: 500px; margin: 0 auto 30px; padding: 0 15px; position: relative; }
 
         .lang-picker { 
-            display: flex; justify-content: center; gap: 8px; 
-            margin: -25px auto 20px; background: white; padding: 8px; border-radius: 50px; 
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1); width: fit-content;
+            display: flex; justify-content: center; gap: 8px; margin: -20px auto 20px; 
+            background: white; padding: 8px; border-radius: 50px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); width: fit-content;
         }
-        .lang-btn { cursor: pointer; border: 1px solid #eee; background: white; font-size: 13px; padding: 6px 12px; border-radius: 20px; font-weight: bold; transition: 0.3s; }
-        .lang-btn.active { background: var(--primary); color: white; border-color: var(--primary); box-shadow: 0 4px 10px rgba(0,86,179,0.3); }
+        .lang-btn { cursor: pointer; border: 1px solid #eee; background: white; font-size: 13px; padding: 6px 12px; border-radius: 20px; font-weight: bold; }
+        .lang-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
 
-        .card { 
-            background: rgba(255, 255, 255, 0.96); padding: 20px; border-radius: 20px; 
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05); margin-bottom: 15px;
-        }
+        .card { background: rgba(255, 255, 255, 0.97); padding: 20px; border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); margin-bottom: 15px; }
         
-        h3 { margin-top: 0; color: #1a1a1a; font-size: 15px; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; font-weight: 700; border-left: 4px solid var(--primary); padding-left: 10px; }
+        h3 { margin-top: 0; color: #1a1a1a; font-size: 16px; margin-bottom: 15px; text-transform: uppercase; border-left: 4px solid var(--primary); padding-left: 10px; }
 
-        /* КОЛЬОРОВА СІТКА ПОСЛУГ */
+        /* КОЛЬОРОВІ ПОСЛУГИ */
         .services-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-        .service-item { padding: 15px 5px; border-radius: 18px; text-align: center; border: 1px solid rgba(0,0,0,0.05); transition: 0.3s; }
-        .service-item:nth-child(1) { background: #e3f2fd; } /* Синій відтінок */
-        .service-item:nth-child(2) { background: #e0f2f1; } /* Бірюзовий */
-        .service-item:nth-child(3) { background: #fff3e0; } /* Оранжевий */
-        .service-item:nth-child(4) { background: #f3e5f5; } /* Фіолетовий */
+        .service-item { padding: 15px 5px; border-radius: 18px; text-align: center; border: 1px solid rgba(0,0,0,0.05); }
+        .s-blue { background: #e3f2fd; }
+        .s-teal { background: #e0f2f1; }
+        .s-orange { background: #fff3e0; }
+        .s-purple { background: #f3e5f5; }
         .service-icon { font-size: 28px; display: block; margin-bottom: 5px; }
         .service-name { font-size: 12px; font-weight: 700; color: #333; }
 
-        /* ЕТАПИ (2х2) З КОЛЬОРОВИМ АКЦЕНТОМ */
-        .steps-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-        .step-box { position: relative; padding: 15px; background: white; border-radius: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.03); text-align: center; border-bottom: 3px solid var(--primary); }
-        .step-num-circle { background: var(--primary); color: white; width: 22px; height: 22px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 11px; font-weight: bold; margin-bottom: 8px; }
-        .step-title { font-size: 12px; font-weight: 700; color: #222; }
+        /* ЕТАПИ */
+        .steps-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .step-box { padding: 12px; background: white; border-radius: 15px; border-bottom: 3px solid var(--primary); text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .step-num { background: var(--primary); color: white; width: 20px; height: 20px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 10px; margin-bottom: 5px; }
 
-        .badge-list { display: flex; flex-wrap: wrap; gap: 6px; }
-        .badge { background: white; color: var(--primary); padding: 5px 12px; border-radius: 10px; font-size: 12px; font-weight: 700; border: 1px solid var(--primary); }
+        .badge-list { display: flex; flex-wrap: wrap; gap: 5px; }
+        .badge { background: white; color: var(--primary); padding: 5px 10px; border-radius: 10px; font-size: 11px; font-weight: bold; border: 1px solid var(--primary); }
 
-        .review { border-bottom: 1px solid #eee; padding: 10px 0; }
-        .review-name { font-weight: bold; font-size: 13px; color: var(--primary); }
-        .review-stars { color: var(--accent); font-size: 10px; display: block; margin: 2px 0; }
-        .review-text { font-style: italic; font-size: 12px; color: #555; }
-
-        .btn-whatsapp { 
-            display: flex; align-items: center; justify-content: center; gap: 10px;
-            background: var(--success); color: white; padding: 16px; 
-            text-
+        .btn-whatsapp { display: flex; align-items: center; justify-content: center; gap: 10px; background: var(--success); color: white; padding: 16px; text-decoration: none; border-radius: 18px; font-weight: bold; font-size: 17px
