@@ -6,7 +6,7 @@
     <title>Artisan Pro | Plomberie & Rénovation</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        :root { --primary: #0056b3; --success: #25D366; --accent: #ffcc00; }
+        :root { --primary: #0056b3; --success: #25D366; --accent: #ffcc00; --soft-blue: #eef3ff; }
         
         body { 
             font-family: 'Montserrat', sans-serif; margin: 0; padding: 0; 
@@ -29,184 +29,41 @@
             margin: -25px auto 20px; background: white; padding: 8px; border-radius: 50px; 
             box-shadow: 0 8px 20px rgba(0,0,0,0.1); width: fit-content;
         }
-        .lang-btn { cursor: pointer; border: 1px solid #eee; background: white; font-size: 13px; padding: 6px 12px; border-radius: 20px; font-weight: bold; }
-        .lang-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
+        .lang-btn { cursor: pointer; border: 1px solid #eee; background: white; font-size: 13px; padding: 6px 12px; border-radius: 20px; font-weight: bold; transition: 0.3s; }
+        .lang-btn.active { background: var(--primary); color: white; border-color: var(--primary); box-shadow: 0 4px 10px rgba(0,86,179,0.3); }
 
         .card { 
             background: rgba(255, 255, 255, 0.96); padding: 20px; border-radius: 20px; 
             box-shadow: 0 5px 20px rgba(0,0,0,0.05); margin-bottom: 15px;
         }
         
-        h3 { margin-top: 0; color: #1a1a1a; font-size: 16px; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; }
+        h3 { margin-top: 0; color: #1a1a1a; font-size: 15px; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; font-weight: 700; border-left: 4px solid var(--primary); padding-left: 10px; }
 
-        /* КОМПАКТНА СІТКА ПОСЛУГ */
+        /* КОЛЬОРОВА СІТКА ПОСЛУГ */
         .services-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-        .service-item { background: white; padding: 12px 5px; border-radius: 15px; text-align: center; border: 1px solid #f0f0f0; }
-        .service-icon { font-size: 24px; display: block; margin-bottom: 5px; }
-        .service-name { font-size: 11px; font-weight: 700; color: #444; }
+        .service-item { padding: 15px 5px; border-radius: 18px; text-align: center; border: 1px solid rgba(0,0,0,0.05); transition: 0.3s; }
+        .service-item:nth-child(1) { background: #e3f2fd; } /* Синій відтінок */
+        .service-item:nth-child(2) { background: #e0f2f1; } /* Бірюзовий */
+        .service-item:nth-child(3) { background: #fff3e0; } /* Оранжевий */
+        .service-item:nth-child(4) { background: #f3e5f5; } /* Фіолетовий */
+        .service-icon { font-size: 28px; display: block; margin-bottom: 5px; }
+        .service-name { font-size: 12px; font-weight: 700; color: #333; }
 
-        /* НОВА КОМПАКТНА СІТКА ЕТАПІВ (2х2) */
+        /* ЕТАПИ (2х2) З КОЛЬОРОВИМ АКЦЕНТОМ */
         .steps-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-        .step-box { position: relative; padding: 12px; background: #fdfdfd; border-radius: 15px; border-left: 3px solid var(--primary); }
-        .step-num-circle { font-size: 10px; font-weight: bold; color: var(--primary); opacity: 0.6; margin-bottom: 4px; display: block; }
-        .step-title { font-size: 12px; font-weight: 700; line-height: 1.3; color: #222; }
+        .step-box { position: relative; padding: 15px; background: white; border-radius: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.03); text-align: center; border-bottom: 3px solid var(--primary); }
+        .step-num-circle { background: var(--primary); color: white; width: 22px; height: 22px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 11px; font-weight: bold; margin-bottom: 8px; }
+        .step-title { font-size: 12px; font-weight: 700; color: #222; }
 
-        .badge-list { display: flex; flex-wrap: wrap; gap: 5px; }
-        .badge { background: #eef3ff; color: var(--primary); padding: 4px 10px; border-radius: 8px; font-size: 11px; font-weight: 700; border: 1px solid #dce6f2; }
+        .badge-list { display: flex; flex-wrap: wrap; gap: 6px; }
+        .badge { background: white; color: var(--primary); padding: 5px 12px; border-radius: 10px; font-size: 12px; font-weight: 700; border: 1px solid var(--primary); }
 
         .review { border-bottom: 1px solid #eee; padding: 10px 0; }
-        .review:last-child { border-bottom: none; }
-        .review-name { font-weight: bold; font-size: 13px; }
-        .review-stars { color: var(--accent); font-size: 9px; display: block; }
-        .review-text { font-style: italic; font-size: 12px; color: #666; margin-top: 3px; }
+        .review-name { font-weight: bold; font-size: 13px; color: var(--primary); }
+        .review-stars { color: var(--accent); font-size: 10px; display: block; margin: 2px 0; }
+        .review-text { font-style: italic; font-size: 12px; color: #555; }
 
         .btn-whatsapp { 
-            display: flex; align-items: center; justify-content: center; gap: 8px;
-            background: var(--success); color: white; padding: 15px; 
-            text-decoration: none; border-radius: 15px; font-weight: bold; 
-            font-size: 16px; box-shadow: 0 8px 15px rgba(37, 211, 102, 0.2);
-        }
-
-        .floating-call {
-            position: fixed; bottom: 20px; right: 20px; width: 55px; height: 55px;
-            background: var(--primary); border-radius: 50%; display: flex;
-            align-items: center; justify-content: center; color: white;
-            text-decoration: none; box-shadow: 0 5px 15px rgba(0,0,0,0.3); z-index: 999;
-            font-size: 22px; animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0,86,179, 0.7); }
-            70% { transform: scale(1.05); box-shadow: 0 0 0 12px rgba(0,86,179, 0); }
-            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0,86,179, 0); }
-        }
-
-        footer { text-align: center; padding: 20px; color: #777; font-size: 10px; }
-    </style>
-</head>
-<body>
-
-<a href="tel:0782006584" class="floating-call">📞</a>
-
-<header>
-    <h1>Artisan Pro</h1>
-    <div class="subtitle" id="main-subtitle">Plomberie & Rénovation</div>
-</header>
-
-<div class="container">
-    <div class="lang-picker">
-        <button class="lang-btn active" id="btn-fr" onclick="setLang('fr')">🇫🇷 FR</button>
-        <button class="lang-btn" id="btn-ua" onclick="setLang('ua')">🇺🇦 UA</button>
-        <button class="lang-btn" id="btn-pl" onclick="setLang('pl')">🇵🇱 PL</button>
-    </div>
-
-    <div class="card">
-        <h3 id="sec1-title">🛁 Expertise</h3>
-        <div class="services-grid">
-            <div class="service-item"><span class="service-icon">🚿</span><span class="service-name" id="s1">Salle de Bain</span></div>
-            <div class="service-item"><span class="service-icon">🚰</span><span class="service-name" id="s2">Plomberie</span></div>
-            <div class="service-item"><span class="service-icon">🍳</span><span class="service-name" id="s3">Cuisine</span></div>
-            <div class="service-item"><span class="service-icon">🧱</span><span class="service-name" id="s4">Carrelage</span></div>
-        </div>
-    </div>
-
-    <div class="card">
-        <h3 id="steps-title">🛠️ Ma méthode</h3>
-        <div class="steps-grid" id="steps-container">
-            </div>
-    </div>
-
-    <div class="card">
-        <h3 id="sec2-title">📍 Zone d'intervention</h3>
-        <div class="badge-list">
-            <span class="badge">Paris (75)</span><span class="badge">77</span><span class="badge">78</span><span class="badge">91</span>
-            <span class="badge">92</span><span class="badge">93</span><span class="badge">94</span><span class="badge">95</span>
-        </div>
-    </div>
-
-    <div class="card">
-        <h3 id="reviews-title">⭐ Avis</h3>
-        <div id="reviews-container"></div>
-    </div>
-
-    <div class="card" style="text-align: center; border: none; background: rgba(37, 211, 102, 0.08);">
-        <p id="contact-text" style="margin-bottom: 12px; font-size: 13px;"><strong>Devis gratuit via WhatsApp</strong></p>
-        <a href="https://wa.me/33782006584" class="btn-whatsapp" id="wa-btn">💬 WhatsApp</a>
-    </div>
-</div>
-
-<footer>&copy; 2026 EXPERT RÉNOVATION PARIS</footer>
-
-<script>
-    const translations = {
-        fr: {
-            subtitle: "Plomberie & Rénovation",
-            sec1: "🛁 Expertise",
-            s: ["Salle de Bain", "Plomberie", "Cuisine", "Carrelage"],
-            stepsTitle: "🛠️ Méthode",
-            steps: ["Devis gratuit", "Intervention rapide", "Travail soigné", "Garantie"],
-            sec2: "📍 Zones",
-            revTitle: "⭐ Avis",
-            revs: [{n:"Jean-Pierre L.",t:"Travail impeccable."}, {n:"Marc D.",t:"Très réactif."}],
-            wa: "💬 WhatsApp"
-        },
-        ua: {
-            subtitle: "Сантехніка та Ремонт",
-            sec1: "🛁 Послуги",
-            s: ["Ванна", "Сантехніка", "Кухня", "Плитка"],
-            stepsTitle: "🛠️ Як я працюю",
-            steps: ["Безкоштовний кошторис", "Швидкий виїзд", "Охайна робота", "Гарантія"],
-            sec2: "📍 Райони",
-            revTitle: "⭐ Відгуки",
-            revs: [{n:"Микола",t:"Дуже задоволений."}, {n:"Андрій",t:"Швидко приїхав."}],
-            wa: "💬 WhatsApp"
-        },
-        pl: {
-            subtitle: "Hydraulika i Remonty",
-            sec1: "🛁 Usługi",
-            s: ["Łazienka", "Hydraulika", "Kuchnia", "Płytki"],
-            stepsTitle: "🛠️ Metoda",
-            steps: ["Darmowa wycena", "Szybki dojazd", "Czysta praca", "Gwarancja"],
-            sec2: "📍 Gdzie",
-            revTitle: "⭐ Opinie",
-            revs: [{n:"Jan K.",t:"Polecam fachowca."}, {n:"Piotr S.",t:"Szybko i profesjonalnie."}],
-            wa: "💬 WhatsApp"
-        }
-    };
-
-    function setLang(lang) {
-        document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-        document.getElementById('btn-' + lang).classList.add('active');
-        const t = translations[lang];
-
-        document.getElementById('main-subtitle').innerText = t.subtitle;
-        document.getElementById('sec1-title').innerText = t.sec1;
-        document.getElementById('s1').innerText = t.s[0];
-        document.getElementById('s2').innerText = t.s[1];
-        document.getElementById('s3').innerText = t.s[2];
-        document.getElementById('s4').innerText = t.s[3];
-        document.getElementById('steps-title').innerText = t.stepsTitle;
-        document.getElementById('sec2-title').innerText = t.sec2;
-        document.getElementById('reviews-title').innerText = t.revTitle;
-        document.getElementById('wa-btn').innerText = t.wa;
-
-        const stepsCont = document.getElementById('steps-container');
-        stepsCont.innerHTML = '';
-        t.steps.forEach((step, i) => {
-            stepsCont.innerHTML += `
-                <div class="step-box">
-                    <span class="step-num-circle">0${i+1}</span>
-                    <div class="step-title">${step}</div>
-                </div>`;
-        });
-
-        const revContainer = document.getElementById('reviews-container');
-        revContainer.innerHTML = '';
-        t.revs.forEach(r => {
-            revContainer.innerHTML += `<div class="review"><span class="review-name">${r.n}</span><span class="review-stars">⭐⭐⭐⭐⭐</span><p class="review-text">"${r.t}"</p></div>`;
-        });
-    }
-    setLang('fr');
-</script>
-</body>
-</html>
+            display: flex; align-items: center; justify-content: center; gap: 10px;
+            background: var(--success); color: white; padding: 16px; 
+            text-
