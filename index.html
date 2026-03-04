@@ -6,15 +6,27 @@
     <title>Artisan Pro | Plomberie & Rénovation</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        :root { --primary: #0056b3; --success: #25D366; --bg: #f4f7f9; }
-        body { font-family: 'Montserrat', sans-serif; margin: 0; padding: 0; background-color: var(--bg); color: #333; line-height: 1.6; }
+        :root { --primary: #0056b3; --success: #25D366; }
+        
+        body { 
+            font-family: 'Montserrat', sans-serif; 
+            margin: 0; padding: 0; 
+            /* ФОН ДЛЯ ВСІЄЇ СТОРІНКИ */
+            background: linear-gradient(rgba(244, 247, 249, 0.9), rgba(244, 247, 249, 0.9)), 
+                        url('https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=1500');
+            background-attachment: fixed;
+            background-size: cover;
+            color: #333; line-height: 1.6; 
+        }
         
         header { 
+            /* ВАША ВЕРХНЯ КАРТИНКА ЗБЕРЕЖЕНА */
             background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
                         url('https://images.unsplash.com/photo-1581244277943-fe4a9c777189?auto=format&fit=crop&q=80&w=1000'); 
             background-size: cover; background-position: center;
             color: white; padding: 60px 20px 80px; text-align: center;
             clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
 
         .container { max-width: 500px; margin: 0 auto 40px; padding: 0 15px; position: relative; z-index: 2; }
@@ -27,28 +39,31 @@
         .lang-btn { cursor: pointer; border: 1px solid #eee; background: white; font-size: 14px; padding: 8px 14px; border-radius: 25px; font-weight: bold; transition: 0.3s; }
         .lang-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
 
-        .card { background: white; padding: 25px; border-radius: 24px; box-shadow: 0 8px 30px rgba(0,0,0,0.05); margin-bottom: 20px; border: 1px solid rgba(0,0,0,0.03); }
+        /* КАРТКИ ТЕПЕР ТРОХИ ПРОЗОРІ ДЛЯ ЕФЕКТУ СТИЛЮ */
+        .card { 
+            background: rgba(255, 255, 255, 0.92); 
+            padding: 25px; border-radius: 24px; 
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08); 
+            margin-bottom: 20px; 
+            border: 1px solid rgba(255,255,255,0.5);
+            backdrop-filter: blur(5px);
+        }
         
         h1 { margin: 0; font-size: 26px; text-transform: uppercase; letter-spacing: 2px; }
         .subtitle { font-size: 16px; opacity: 0.9; margin-top: 10px; font-weight: bold; }
         
         h3 { margin-top: 0; color: #1a1a1a; font-size: 18px; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
 
-        /* ТАБЛИЦЯ ПОСЛУГ */
         .services-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
         .service-item { 
-            background: #f8f9fa; padding: 20px 10px; border-radius: 18px; text-align: center; 
-            border: 1px solid rgba(0,0,0,0.05); transition: 0.3s;
+            background: white; padding: 20px 10px; border-radius: 18px; text-align: center; 
+            border: 1px solid rgba(0,0,0,0.05); box-shadow: 0 4px 10px rgba(0,0,0,0.03);
         }
         .service-icon { font-size: 30px; display: block; margin-bottom: 8px; }
         .service-name { font-size: 13px; font-weight: 700; color: #444; }
 
-        /* РАЙОНИ */
         .badge-list { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
-        .badge { 
-            background: #eef3ff; color: var(--primary); padding: 6px 14px; border-radius: 12px; 
-            font-size: 12px; font-weight: 700; border: 1px solid #d0dfff;
-        }
+        .badge { background: #eef3ff; color: var(--primary); padding: 6px 14px; border-radius: 12px; font-size: 12px; font-weight: 700; border: 1px solid #d0dfff; }
 
         .review { border-bottom: 1px solid #eee; padding: 15px 0; }
         .review:last-child { border-bottom: none; }
@@ -60,10 +75,10 @@
             display: flex; align-items: center; justify-content: center;
             background: var(--success); color: white; padding: 18px; 
             text-decoration: none; border-radius: 18px; font-weight: bold; 
-            font-size: 18px; box-shadow: 0 10px 20px rgba(37, 211, 102, 0.2);
+            font-size: 18px; box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3);
         }
 
-        footer { text-align: center; padding: 30px 20px; color: #aaa; font-size: 11px; }
+        footer { text-align: center; padding: 30px 20px; color: #555; font-size: 11px; font-weight: bold; }
     </style>
 </head>
 <body>
@@ -92,7 +107,7 @@
 
     <div class="card">
         <h3 id="sec2-title">📍 Zone d'intervention</h3>
-        <p style="font-size: 14px; color: #666; margin-bottom: 15px;" id="sec2-text">Je me déplace à Paris et en Île-de-France :</p>
+        <p style="font-size: 14px; color: #444; margin-bottom: 15px;" id="sec2-text">Je me déplace à Paris et en Île-de-France :</p>
         <div class="badge-list">
             <span class="badge">Paris (75)</span><span class="badge">77</span><span class="badge">78</span><span class="badge">91</span>
             <span class="badge">92</span><span class="badge">93</span><span class="badge">94</span><span class="badge">95</span>
@@ -101,11 +116,10 @@
 
     <div class="card">
         <h3 id="reviews-title">⭐ Avis Clients</h3>
-        <div id="reviews-container">
-            </div>
+        <div id="reviews-container"></div>
     </div>
 
-    <div class="card" style="text-align: center; border: none; background: #eef3ff;">
+    <div class="card" style="text-align: center; border: none; background: rgba(238, 243, 255, 0.95);">
         <p id="contact-text" style="margin-bottom: 15px;"><strong>Estimation gratuite par photo</strong></p>
         <a href="https://wa.me/33782006584" class="btn-whatsapp" id="wa-btn">💬 WhatsApp Message</a>
     </div>
