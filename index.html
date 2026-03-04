@@ -6,8 +6,8 @@
     <title>Artisan Pro | Plomberie & Rénovation</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        :root { --primary: #0056b3; --success: #25D366; }
-        body { font-family: 'Montserrat', sans-serif; margin: 0; padding: 0; background-color: #f0f2f5; color: #333; }
+        :root { --primary: #0056b3; --success: #25D366; --bg: #f4f7f9; }
+        body { font-family: 'Montserrat', sans-serif; margin: 0; padding: 0; background-color: var(--bg); color: #333; line-height: 1.5; }
         header { 
             background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), 
                         url('https://images.unsplash.com/photo-1581244277943-fe4a9c777189?auto=format&fit=crop&q=80&w=1000'); 
@@ -21,26 +21,36 @@
             margin: -30px auto 25px; background: white; padding: 10px; border-radius: 50px; 
             box-shadow: 0 10px 25px rgba(0,0,0,0.15); width: fit-content;
         }
-        .lang-btn { 
-            cursor: pointer; border: 1px solid #eee; background: white; font-size: 14px; 
-            padding: 8px 14px; border-radius: 25px; transition: 0.3s; font-weight: bold;
-        }
+        .lang-btn { cursor: pointer; border: 1px solid #eee; background: white; font-size: 14px; padding: 8px 14px; border-radius: 25px; font-weight: bold; }
         .lang-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
-        .card { background: white; padding: 25px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); margin-bottom: 20px; }
+        
+        .card { background: white; padding: 25px; border-radius: 20px; box-shadow: 0 8px 20px rgba(0,0,0,0.06); margin-bottom: 20px; border-left: 6px solid var(--primary); }
         h1 { margin: 0; font-size: 26px; text-transform: uppercase; letter-spacing: 2px; }
-        .subtitle { font-size: 16px; opacity: 0.9; margin-top: 10px; margin-bottom: 20px; font-weight: bold; }
-        .services-list { text-align: left; list-style: none; padding: 0; margin: 15px 0; }
-        .services-list li { padding: 12px 0; border-bottom: 1px solid #eee; display: flex; align-items: center; }
-        .services-list li::before { content: "🛠️"; margin-right: 10px; }
-        .steps { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; text-align: center; font-size: 13px; font-weight: bold; }
-        .step-icon { font-size: 28px; display: block; margin-bottom: 5px; }
+        .subtitle { font-size: 16px; opacity: 0.9; margin-top: 10px; font-weight: bold; }
+        
+        h3 { margin-top: 0; color: var(--primary); font-size: 18px; text-transform: uppercase; display: flex; align-items: center; gap: 10px; }
+        
+        .services-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 15px 0; }
+        .service-item { background: #f8f9fa; padding: 15px; border-radius: 12px; text-align: center; font-size: 13px; font-weight: bold; }
+        .service-icon { font-size: 24px; display: block; margin-bottom: 8px; }
+
+        .badge-list { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+        .badge { background: #eef3ff; color: var(--primary); padding: 5px 12px; border-radius: 20px; font-size: 12px; font-weight: bold; }
+
+        /* Стилі для відгуків */
+        .review { border-bottom: 1px solid #eee; padding: 15px 0; }
+        .review:last-child { border-bottom: none; }
+        .review-name { font-weight: bold; font-size: 14px; display: block; }
+        .review-stars { color: #ffcc00; font-size: 12px; margin-bottom: 5px; display: block; }
+        .review-text { font-style: italic; font-size: 13px; color: #555; }
+
         .btn-whatsapp { 
             display: flex; align-items: center; justify-content: center;
             background: var(--success); color: white; padding: 20px; 
             text-decoration: none; border-radius: 15px; font-weight: bold; 
             font-size: 18px; box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
         }
-        footer { text-align: center; padding: 30px 20px; color: #888; font-size: 12px; }
+        footer { text-align: center; padding: 30px 20px; color: #888; font-size: 11px; }
     </style>
 </head>
 <body>
@@ -58,59 +68,84 @@
     </div>
 
     <div class="card">
-        <h3 id="services-title">Mes Prestations</h3>
-        <ul class="services-list" id="services-list">
-            <li><strong>Plomberie (Fuites, WC)</strong></li>
-            <li><strong>Pose de carrelage</strong></li>
-            <li><strong>Rénovation complète</strong></li>
-            <li><strong>Bricolage & Montage</strong></li>
-        </ul>
-    </div>
-
-    <div class="card">
-        <h3 id="why-title">Pourquoi moi ?</h3>
-        <div class="steps">
-            <div><span class="step-icon">⚡</span><span id="step-1">Rapide</span></div>
-            <div><span class="step-icon">🧼</span><span id="step-2">Propre</span></div>
-            <div><span class="step-icon">🤝</span><span id="step-3">Prix Juste</span></div>
+        <h3 id="sec1-title">🛁 Domaines d'expertise</h3>
+        <div class="services-grid" id="services-grid">
+            <div class="service-item"><span class="service-icon">🚿</span><strong>Salle de Bain</strong></div>
+            <div class="service-item"><span class="service-icon">🚰</span><strong>Plomberie</strong></div>
+            <div class="service-item"><span class="service-icon">🍳</span><strong>Cuisine</strong></div>
+            <div class="service-item"><span class="service-icon">🧱</span><strong>Carrelage</strong></div>
         </div>
     </div>
 
-    <div class="card" style="text-align: center;">
-        <p id="contact-text"><strong>Besoin d'un devis gratuit ?</strong><br>Envoyez-moi une photo du problème.</p>
+    <div class="card">
+        <h3 id="sec2-title">📍 Zone d'intervention</h3>
+        <p style="font-size: 14px;" id="sec2-text">Je me déplace à Paris et dans toute l'Île-de-France :</p>
+        <div class="badge-list">
+            <span class="badge">Paris (75)</span>
+            <span class="badge">77</span><span class="badge">78</span><span class="badge">91</span>
+            <span class="badge">92</span><span class="badge">93</span><span class="badge">94</span><span class="badge">95</span>
+        </div>
+    </div>
+
+    <div class="card">
+        <h3 id="reviews-title">⭐ Avis Clients</h3>
+        <div id="reviews-container">
+            </div>
+    </div>
+
+    <div class="card" style="text-align: center; border-left: none; background: #eef3ff;">
+        <p id="contact-text"><strong>Estimation gratuite par photo</strong></p>
         <a href="https://wa.me/33782006584" class="btn-whatsapp" id="wa-btn">💬 WhatsApp Message</a>
     </div>
 </div>
 
-<footer>&copy; 2026 Expert Rénovation Paris</footer>
+<footer>&copy; 2026 Expert Rénovation Paris | Devis Gratuit</footer>
 
 <script>
     const translations = {
         fr: {
             subtitle: "Plomberie & Rénovation",
-            servicesTitle: "Mes Prestations",
-            services: ["Plomberie (Fuites, WC)", "Pose de carrelage", "Rénovation complète", "Bricolage & Montage"],
-            whyTitle: "Pourquoi moi ?",
-            step1: "Rapide", step2: "Propre", step3: "Prix Juste",
-            contactText: "Besoin d'un devis gratuit ? Envoyez-moi une photo du problème.",
+            sec1: "🛁 Domaines d'expertise",
+            services: ["Salle de Bain", "Plomberie", "Cuisine", "Carrelage"],
+            sec2Title: "📍 Zone d'intervention",
+            sec2Text: "Je me déplace à Paris et dans toute l'Île-de-France :",
+            reviewsTitle: "⭐ Avis Clients",
+            reviews: [
+                {name: "Jean-Pierre L.", text: "Travail très propre pour ma salle de bain. Artisan sérieux et ponctuel."},
+                {name: "Marc D.", text: "Réparation de fuite rapide un dimanche. Prix très correct. Je recommande !"},
+                {name: "Sophie M.", text: "Magnifique pose de carrelage dans ma cuisine. Merci encore !"}
+            ],
+            contactText: "Estimation gratuite par photo",
             waBtn: "💬 WhatsApp Message"
         },
         ua: {
             subtitle: "Сантехніка та Ремонт",
-            servicesTitle: "Послуги у Парижі",
-            services: ["Сантехніка (Витоки, WC)", "Укладання плитки", "Комплексний ремонт", "Монтаж та дрібні роботи"],
-            whyTitle: "Ваш майстер у Парижі",
-            step1: "Швидко", step2: "Чисто", step3: "Чесна ціна",
-            contactText: "Потрібна оцінка? Надішліть фото проблеми у WhatsApp.",
+            sec1: "🛁 Сфери роботи",
+            services: ["Ванні кімнати", "Сантехніка", "Кухні", "Плитка"],
+            sec2Title: "📍 Де я працюю",
+            sec2Text: "Виїжджаю по Парижу та всьому регіону Île-de-France:",
+            reviewsTitle: "⭐ Відгуки клієнтів",
+            reviews: [
+                {name: "Жан-П'єр Л.", text: "Дуже чиста робота у ванній. Серйозний та пунктуальний майстер."},
+                {name: "Марк Д.", text: "Швидко усунув витік у неділю. Дуже адекватна ціна. Рекомендую!"},
+                {name: "Софі М.", text: "Чудове укладання плитки на кухні. Ще раз дякую!"}
+            ],
+            contactText: "Безкоштовна оцінка по фото",
             waBtn: "💬 Написати у WhatsApp"
         },
         pl: {
             subtitle: "Hydraulika i Remonty",
-            servicesTitle: "Moje Usługi",
-            services: ["Hydraulika (Przecieki, WC)", "Układanie płytek", "Kompletny remont", "Montaż i naprawy"],
-            whyTitle: "Dlaczego ja?",
-            step1: "Szybko", step2: "Czysto", step3: "Dobra cena",
-            contactText: "Darmowa wycena? Wyślij zdjęcie na WhatsApp.",
+            sec1: "🛁 Obszary prac",
+            services: ["Łazienki", "Hydraulika", "Kuchnie", "Płytki"],
+            sec2Title: "📍 Gdzie pracuję",
+            sec2Text: "Pracuję w Paryżu i całym regionie Île-de-France:",
+            reviewsTitle: "⭐ Opinie klientów",
+            reviews: [
+                {name: "Jean-Pierre L.", text: "Bardzo czysta praca w łazience. Poważny i punktualny fachowiec."},
+                {name: "Marc D.", text: "Szybka naprawa wycieku w niedzielę. Bardzo uczciwa cena. Polecam!"},
+                {name: "Sophie M.", text: "Świetne układanie płytek w kuchні. Jeszcze raz dziękuję!"}
+            ],
+            contactText: "Darmowa wycena на podstawie zdjęcia",
             waBtn: "💬 Napisz na WhatsApp"
         }
     };
@@ -119,22 +154,39 @@
         document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
         document.getElementById('btn-' + lang).classList.add('active');
         const t = translations[lang];
+        
         document.getElementById('main-subtitle').innerText = t.subtitle;
-        document.getElementById('services-title').innerText = t.servicesTitle;
-        document.getElementById('why-title').innerText = t.whyTitle;
-        document.getElementById('step-1').innerText = t.step1;
-        document.getElementById('step-2').innerText = t.step2;
-        document.getElementById('step-3').innerText = t.step3;
+        document.getElementById('sec1-title').innerHTML = t.sec1;
+        document.getElementById('sec2-title').innerText = t.sec2Title;
+        document.getElementById('sec2-text').innerText = t.sec2Text;
+        document.getElementById('reviews-title').innerText = t.reviewsTitle;
         document.getElementById('contact-text').innerHTML = `<strong>${t.contactText}</strong>`;
         document.getElementById('wa-btn').innerText = t.waBtn;
-        const list = document.getElementById('services-list');
-        list.innerHTML = '';
-        t.services.forEach(s => {
-            const li = document.createElement('li');
-            li.innerHTML = `<strong>${s}</strong>`;
-            list.appendChild(li);
+
+        // Оновлення сервісів
+        const grid = document.getElementById('services-grid');
+        const icons = ["🚿", "🚰", "🍳", "🧱"];
+        grid.innerHTML = '';
+        t.services.forEach((s, i) => {
+            grid.innerHTML += `<div class="service-item"><span class="service-icon">${icons[i]}</span><strong>${s}</strong></div>`;
+        });
+
+        // Оновлення відгуків
+        const revContainer = document.getElementById('reviews-container');
+        revContainer.innerHTML = '';
+        t.reviews.forEach(r => {
+            revContainer.innerHTML += `
+                <div class="review">
+                    <span class="review-name">${r.name}</span>
+                    <span class="review-stars">⭐⭐⭐⭐⭐</span>
+                    <p class="review-text">"${r.text}"</p>
+                </div>
+            `;
         });
     }
+
+    // Запуск при завантаженні
+    setLang('fr');
 </script>
 </body>
 </html>
