@@ -6,82 +6,88 @@
     <title>Artisan Pro | Plomberie & Rénovation</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        :root { --primary: #0056b3; --success: #25D366; }
+        :root { --primary: #0056b3; --success: #25D366; --accent: #ffcc00; }
         
         body { 
-            font-family: 'Montserrat', sans-serif; 
-            margin: 0; padding: 0; 
-            /* ФОН ДЛЯ ВСІЄЇ СТОРІНКИ */
-            background: linear-gradient(rgba(244, 247, 249, 0.9), rgba(244, 247, 249, 0.9)), 
+            font-family: 'Montserrat', sans-serif; margin: 0; padding: 0; 
+            background: linear-gradient(rgba(244, 247, 249, 0.92), rgba(244, 247, 249, 0.92)), 
                         url('https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=1500');
-            background-attachment: fixed;
-            background-size: cover;
-            color: #333; line-height: 1.6; 
+            background-attachment: fixed; background-size: cover; color: #333; 
         }
         
         header { 
-            /* ВАША ВЕРХНЯ КАРТИНКА ЗБЕРЕЖЕНА */
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+            background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), 
                         url('https://images.unsplash.com/photo-1581244277943-fe4a9c777189?auto=format&fit=crop&q=80&w=1000'); 
-            background-size: cover; background-position: center;
-            color: white; padding: 60px 20px 80px; text-align: center;
+            background-size: cover; background-position: center; color: white; padding: 60px 20px 80px; text-align: center;
             clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
 
         .container { max-width: 500px; margin: 0 auto 40px; padding: 0 15px; position: relative; z-index: 2; }
 
         .lang-picker { 
             display: flex; justify-content: center; gap: 8px; 
-            margin: -30px auto 25px; background: white; padding: 10px; border-radius: 50px; 
+            margin: -35px auto 25px; background: white; padding: 10px; border-radius: 50px; 
             box-shadow: 0 10px 25px rgba(0,0,0,0.15); width: fit-content;
         }
-        .lang-btn { cursor: pointer; border: 1px solid #eee; background: white; font-size: 14px; padding: 8px 14px; border-radius: 25px; font-weight: bold; transition: 0.3s; }
+        .lang-btn { cursor: pointer; border: 1px solid #eee; background: white; font-size: 14px; padding: 8px 14px; border-radius: 25px; font-weight: bold; }
         .lang-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
 
-        /* КАРТКИ ТЕПЕР ТРОХИ ПРОЗОРІ ДЛЯ ЕФЕКТУ СТИЛЮ */
         .card { 
-            background: rgba(255, 255, 255, 0.92); 
-            padding: 25px; border-radius: 24px; 
-            box-shadow: 0 8px 30px rgba(0,0,0,0.08); 
-            margin-bottom: 20px; 
-            border: 1px solid rgba(255,255,255,0.5);
-            backdrop-filter: blur(5px);
+            background: rgba(255, 255, 255, 0.95); padding: 25px; border-radius: 24px; 
+            box-shadow: 0 8px 30px rgba(0,0,0,0.06); margin-bottom: 20px; backdrop-filter: blur(5px);
         }
         
         h1 { margin: 0; font-size: 26px; text-transform: uppercase; letter-spacing: 2px; }
-        .subtitle { font-size: 16px; opacity: 0.9; margin-top: 10px; font-weight: bold; }
-        
-        h3 { margin-top: 0; color: #1a1a1a; font-size: 18px; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+        h3 { margin-top: 0; color: #1a1a1a; font-size: 18px; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
 
-        .services-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-        .service-item { 
-            background: white; padding: 20px 10px; border-radius: 18px; text-align: center; 
-            border: 1px solid rgba(0,0,0,0.05); box-shadow: 0 4px 10px rgba(0,0,0,0.03);
-        }
-        .service-icon { font-size: 30px; display: block; margin-bottom: 8px; }
-        .service-name { font-size: 13px; font-weight: 700; color: #444; }
+        .services-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .service-item { background: white; padding: 15px 5px; border-radius: 18px; text-align: center; border: 1px solid #f0f0f0; }
+        .service-icon { font-size: 28px; display: block; margin-bottom: 5px; }
+        .service-name { font-size: 12px; font-weight: 700; color: #444; }
 
-        .badge-list { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
-        .badge { background: #eef3ff; color: var(--primary); padding: 6px 14px; border-radius: 12px; font-size: 12px; font-weight: 700; border: 1px solid #d0dfff; }
+        /* ЕТАПИ РОБОТИ */
+        .steps-list { list-style: none; padding: 0; margin: 0; }
+        .step-item { display: flex; align-items: flex-start; gap: 15px; margin-bottom: 15px; }
+        .step-num { background: var(--primary); color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: bold; flex-shrink: 0; margin-top: 3px; }
+        .step-text { font-size: 14px; color: #555; }
 
-        .review { border-bottom: 1px solid #eee; padding: 15px 0; }
+        .badge-list { display: flex; flex-wrap: wrap; gap: 6px; }
+        .badge { background: #eef3ff; color: var(--primary); padding: 5px 12px; border-radius: 10px; font-size: 12px; font-weight: 700; border: 1px solid #dce6f2; }
+
+        .review { border-bottom: 1px solid #eee; padding: 12px 0; }
         .review:last-child { border-bottom: none; }
         .review-name { font-weight: bold; font-size: 14px; }
-        .review-stars { color: #ffcc00; font-size: 12px; margin-bottom: 5px; display: block; }
-        .review-text { font-style: italic; font-size: 13px; color: #666; }
+        .review-stars { color: var(--accent); font-size: 10px; display: block; }
+        .review-text { font-style: italic; font-size: 13px; color: #666; margin: 5px 0 0; }
 
         .btn-whatsapp { 
-            display: flex; align-items: center; justify-content: center;
+            display: flex; align-items: center; justify-content: center; gap: 10px;
             background: var(--success); color: white; padding: 18px; 
             text-decoration: none; border-radius: 18px; font-weight: bold; 
-            font-size: 18px; box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3);
+            font-size: 18px; box-shadow: 0 10px 20px rgba(37, 211, 102, 0.2);
         }
 
-        footer { text-align: center; padding: 30px 20px; color: #555; font-size: 11px; font-weight: bold; }
+        /* ПЛАВАЮЧА КНОПКА ДЗВІНКА */
+        .floating-call {
+            position: fixed; bottom: 20px; right: 20px; width: 60px; height: 60px;
+            background: var(--primary); border-radius: 50%; display: flex;
+            align-items: center; justify-content: center; color: white;
+            text-decoration: none; box-shadow: 0 5px 20px rgba(0,0,0,0.3); z-index: 999;
+            font-size: 24px; animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0,86,179, 0.7); }
+            70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(0,86,179, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0,86,179, 0); }
+        }
+
+        footer { text-align: center; padding: 30px 20px; color: #666; font-size: 11px; }
     </style>
 </head>
 <body>
+
+<a href="tel:0782006584" class="floating-call">📞</a>
 
 <header>
     <h1>Artisan Pro</h1>
@@ -96,7 +102,7 @@
     </div>
 
     <div class="card">
-        <h3 id="sec1-title">🛁 Domaines d'expertise</h3>
+        <h3 id="sec1-title">🛁 Expertise</h3>
         <div class="services-grid">
             <div class="service-item"><span class="service-icon">🚿</span><span class="service-name" id="s1">Salle de Bain</span></div>
             <div class="service-item"><span class="service-icon">🚰</span><span class="service-name" id="s2">Plomberie</span></div>
@@ -106,8 +112,13 @@
     </div>
 
     <div class="card">
+        <h3 id="steps-title">🛠️ Ma méthode</h3>
+        <div class="steps-list" id="steps-container">
+            </div>
+    </div>
+
+    <div class="card">
         <h3 id="sec2-title">📍 Zone d'intervention</h3>
-        <p style="font-size: 14px; color: #444; margin-bottom: 15px;" id="sec2-text">Je me déplace à Paris et en Île-de-France :</p>
         <div class="badge-list">
             <span class="badge">Paris (75)</span><span class="badge">77</span><span class="badge">78</span><span class="badge">91</span>
             <span class="badge">92</span><span class="badge">93</span><span class="badge">94</span><span class="badge">95</span>
@@ -115,13 +126,13 @@
     </div>
 
     <div class="card">
-        <h3 id="reviews-title">⭐ Avis Clients</h3>
+        <h3 id="reviews-title">⭐ Avis</h3>
         <div id="reviews-container"></div>
     </div>
 
-    <div class="card" style="text-align: center; border: none; background: rgba(238, 243, 255, 0.95);">
-        <p id="contact-text" style="margin-bottom: 15px;"><strong>Estimation gratuite par photo</strong></p>
-        <a href="https://wa.me/33782006584" class="btn-whatsapp" id="wa-btn">💬 WhatsApp Message</a>
+    <div class="card" style="text-align: center; border: none; background: rgba(37, 211, 102, 0.1);">
+        <p id="contact-text" style="margin-bottom: 15px; font-size: 14px;"><strong>Devis gratuit sur photo via WhatsApp</strong></p>
+        <a href="https://wa.me/33782006584" class="btn-whatsapp" id="wa-btn">💬 WhatsApp</a>
     </div>
 </div>
 
@@ -131,34 +142,35 @@
     const translations = {
         fr: {
             subtitle: "Plomberie & Rénovation",
-            sec1: "🛁 Domaines d'expertise",
+            sec1: "🛁 Expertise",
             s: ["Salle de Bain", "Plomberie", "Cuisine", "Carrelage"],
+            stepsTitle: "🛠️ Ma méthode",
+            steps: ["Contact & Devis gratuit", "Déplacement rapide", "Travail soigné et propre", "Garantie et suivi"],
             sec2: "📍 Zone d'intervention",
-            sec2t: "Je me déplace à Paris et en Île-de-France :",
             revTitle: "⭐ Avis Clients",
-            revs: [{n:"Jean-Pierre L.",t:"Travail très propre. Artisan sérieux."}, {n:"Marc D.",t:"Prix correct. Je recommande !"}],
-            contact: "Estimation gratuite par photo",
+            revs: [{n:"Jean-Pierre L.",t:"Travail impeccable. Je recommande."}, {n:"Marc D.",t:"Très réactif pour une urgence."}],
             wa: "💬 WhatsApp Message"
         },
         ua: {
             subtitle: "Сантехніка та Ремонт",
-            sec1: "🛁 Сфери роботи",
+            sec1: "🛁 Послуги",
             s: ["Ванна кімната", "Сантехніка", "Кухня", "Плитка"],
+            stepsTitle: "🛠️ Як я працюю",
+            steps: ["Контакт та безкоштовний кошторис", "Швидкий виїзд на об'єкт", "Чиста та охайна робота", "Гарантія на результат"],
             sec2: "📍 Де я працюю",
-            sec2t: "Виїжджаю по Парижу та всьому регіону Île-de-France:",
-            revTitle: "⭐ Відгуки клієнтів",
-            revs: [{n:"Жан-П'єр Л.",t:"Дуже чиста робота. Серйозний майстер."}, {n:"Марк Д.",t:"Адекватна ціна. Рекомендую!"}],
-            contact: "Безкоштовна оцінка по фото",
+            revTitle: "⭐ Відгуки",
+            revs: [{n:"Микола",t:"Дуже задоволений ремонтом у ванній."}, {n:"Андрій",t:"Швидко приїхав і все полагодив."}],
             wa: "💬 Написати у WhatsApp"
         },
         pl: {
             subtitle: "Hydraulika i Remonty",
-            sec1: "🛁 Obszary prac",
+            sec1: "🛁 Usługi",
             s: ["Łazienka", "Hydraulika", "Kuchnia", "Płytki"],
+            stepsTitle: "🛠️ Moja metoda",
+            steps: ["Kontakt i darmowa wycena", "Szybki dojazd", "Czysta i staranna praca", "Gwarancja jakości"],
             sec2: "📍 Gdzie pracuję",
-            sec2t: "Pracuję w Paryżu i całym regionie Île-de-France:",
-            revTitle: "⭐ Opinie klientów",
-            revs: [{n:"Jean-Pierre L.",t:"Bardzo czysta praca. Polecam."}, {n:"Marc D.",t:"Uczciwa cena i szybko!"}],
+            revTitle: "⭐ Opinie",
+            revs: [{n:"Jan K.",t:"Świetny fachowiec. Polecam."}, {n:"Piotr S.",t:"Szybko i profesjonalnie."}],
             wa: "💬 Napisz na WhatsApp"
         }
     };
@@ -174,21 +186,21 @@
         document.getElementById('s2').innerText = t.s[1];
         document.getElementById('s3').innerText = t.s[2];
         document.getElementById('s4').innerText = t.s[3];
+        document.getElementById('steps-title').innerText = t.stepsTitle;
         document.getElementById('sec2-title').innerText = t.sec2;
-        document.getElementById('sec2-text').innerText = t.sec2t;
         document.getElementById('reviews-title').innerText = t.revTitle;
-        document.getElementById('contact-text').innerHTML = `<strong>${t.contact}</strong>`;
         document.getElementById('wa-btn').innerText = t.wa;
+
+        const stepsCont = document.getElementById('steps-container');
+        stepsCont.innerHTML = '';
+        t.steps.forEach((step, i) => {
+            stepsCont.innerHTML += `<div class="step-item"><div class="step-num">${i+1}</div><div class="step-text">${step}</div></div>`;
+        });
 
         const revContainer = document.getElementById('reviews-container');
         revContainer.innerHTML = '';
         t.revs.forEach(r => {
-            revContainer.innerHTML += `
-                <div class="review">
-                    <span class="review-name">${r.n}</span>
-                    <span class="review-stars">⭐⭐⭐⭐⭐</span>
-                    <p class="review-text">"${r.t}"</p>
-                </div>`;
+            revContainer.innerHTML += `<div class="review"><span class="review-name">${r.n}</span><span class="review-stars">⭐⭐⭐⭐⭐</span><p class="review-text">"${r.t}"</p></div>`;
         });
     }
     setLang('fr');
