@@ -8,102 +8,220 @@
     <style>
         :root { --primary: #0056b3; --success: #25D366; --accent: #ffcc00; }
         
-        /* ФОН ТА ОСНОВА */
         body { 
             font-family: 'Montserrat', sans-serif; margin: 0; padding: 0; 
-            background: #f4f7f9 url('https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=1500') no-repeat center center fixed;
-            background-size: cover; color: #333; 
+            background: linear-gradient(rgba(244, 247, 249, 0.94), rgba(244, 247, 249, 0.94)), 
+                        url('https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=1500');
+            background-attachment: fixed; background-size: cover; color: #333; 
         }
         
         header { 
-            background: rgba(0, 0, 0, 0.7); color: white; padding: 40px 20px; text-align: center;
+            background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), 
+                        url('https://images.unsplash.com/photo-1581244277943-fe4a9c777189?auto=format&fit=crop&q=80&w=1000'); 
+            background-size: cover; background-position: center; color: white; padding: 50px 20px 70px; text-align: center;
             clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
         }
 
-        .container { max-width: 500px; margin: 0 auto 30px; padding: 0 15px; }
+        .container { max-width: 500px; margin: 0 auto 30px; padding: 0 15px; position: relative; z-index: 2; }
 
-        /* КНОПКИ МОВ */
         .lang-picker { 
-            display: flex; justify-content: center; gap: 10px; margin: -20px auto 20px; 
-            background: white; padding: 10px; border-radius: 50px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); 
-            width: fit-content; position: relative; z-index: 999;
+            display: flex; justify-content: center; gap: 8px; 
+            margin: -25px auto 20px; background: white; padding: 8px; border-radius: 50px; 
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1); width: fit-content;
         }
-        .lang-btn { 
-            cursor: pointer; border: 1px solid #eee; background: #fff; padding: 8px 15px; 
-            border-radius: 20px; font-weight: bold; font-size: 14px; color: #333;
-        }
+        .lang-btn { cursor: pointer; border: 1px solid #eee; background: white; font-size: 13px; padding: 6px 12px; border-radius: 20px; font-weight: bold; transition: 0.3s; }
         .lang-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
 
-        /* КАРТКИ */
-        .card { background: rgba(255, 255, 255, 0.98); padding: 20px; border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); margin-bottom: 20px; }
-        h3 { margin-top: 0; font-size: 16px; border-left: 4px solid var(--primary); padding-left: 10px; margin-bottom: 15px; }
+        .card { 
+            background: rgba(255, 255, 255, 0.96); padding: 20px; border-radius: 20px; 
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05); margin-bottom: 15px;
+        }
+        
+        h3 { margin-top: 0; color: #1a1a1a; font-size: 16px; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; }
 
-        /* ТАБЛИЦІ ПОСЛУГ */
-        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-        .service { padding: 15px 5px; border-radius: 15px; text-align: center; font-weight: bold; font-size: 12px; }
-        .s1 { background: #e3f2fd; } .s2 { background: #e0f2f1; } .s3 { background: #fff3e0; } .s4 { background: #f3e5f5; }
+        .services-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .service-item { background: white; padding: 12px 5px; border-radius: 15px; text-align: center; border: 1px solid #f0f0f0; }
+        .service-icon { font-size: 24px; display: block; margin-bottom: 5px; }
+        .service-name { font-size: 11px; font-weight: 700; color: #444; }
 
-        /* ЕТАПИ РОБОТИ */
-        .step { background: #fff; padding: 10px; border-radius: 12px; border-bottom: 3px solid var(--primary); text-align: center; font-size: 11px; font-weight: bold; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
-        .num { background: var(--primary); color: white; width: 20px; height: 20px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-bottom: 5px; }
+        .steps-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .step-box { position: relative; padding: 12px; background: #fdfdfd; border-radius: 15px; border-left: 3px solid var(--primary); }
+        .step-num-circle { font-size: 10px; font-weight: bold; color: var(--primary); opacity: 0.6; margin-bottom: 4px; display: block; }
+        .step-title { font-size: 12px; font-weight: 700; line-height: 1.3; color: #222; }
 
-        /* ВІДГУКИ */
+        .badge-list { display: flex; flex-wrap: wrap; gap: 5px; }
+        .badge { background: #eef3ff; color: var(--primary); padding: 4px 10px; border-radius: 8px; font-size: 11px; font-weight: 700; border: 1px solid #dce6f2; }
+
         .review { border-bottom: 1px solid #eee; padding: 10px 0; }
-        .rev-name { font-weight: bold; font-size: 13px; color: var(--primary); }
-        .stars { color: var(--accent); font-size: 10px; }
-        .rev-text { font-style: italic; font-size: 12px; color: #555; }
+        .review-name { font-weight: bold; font-size: 13px; }
+        .review-stars { color: var(--accent); font-size: 9px; display: block; }
+        .review-text { font-style: italic; font-size: 12px; color: #666; margin-top: 3px; }
 
-        /* КНОПКИ ЗВ'ЯЗКУ */
-        .btn-wa { display: flex; align-items: center; justify-content: center; gap: 10px; background: var(--success); color: white; padding: 18px; text-decoration: none; border-radius: 18px; font-weight: bold; font-size: 18px; }
-        .call-float { position: fixed; bottom: 20px; right: 20px; width: 60px; height: 60px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; font-size: 24px; z-index: 1000; box-shadow: 0 5px 20px rgba(0,0,0,0.3); }
+        .btn-whatsapp { 
+            display: flex; align-items: center; justify-content: center; gap: 8px;
+            background: var(--success); color: white; padding: 15px; 
+            text-decoration: none; border-radius: 15px; font-weight: bold; 
+            font-size: 16px; box-shadow: 0 8px 15px rgba(37, 211, 102, 0.2);
+        }
 
-        footer { text-align: center; padding: 20px; font-size: 10px; color: #666; font-weight: bold; }
+        .floating-call {
+            position: fixed; bottom: 20px; right: 20px; width: 55px; height: 55px;
+            background: var(--primary); border-radius: 50%; display: flex;
+            align-items: center; justify-content: center; color: white;
+            text-decoration: none; box-shadow: 0 5px 15px rgba(0,0,0,0.3); z-index: 999;
+            font-size: 22px; animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0,86,179, 0.7); }
+            70% { transform: scale(1.05); box-shadow: 0 0 0 12px rgba(0,86,179, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0,86,179, 0); }
+        }
+
+        footer { text-align: center; padding: 20px; color: #777; font-size: 10px; }
     </style>
 </head>
 <body>
 
-<a href="tel:0782006584" class="call-float">📞</a>
+<a href="tel:0782006584" class="floating-call">📞</a>
 
 <header>
-    <h1 style="margin:0;">Artisan Pro</h1>
-    <p id="main-sub" style="font-weight:bold; margin:10px 0 0;">Plomberie & Rénovation</p>
+    <h1>Artisan Pro</h1>
+    <div class="subtitle" id="main-subtitle">Plomberie & Rénovation</div>
 </header>
 
 <div class="container">
     <div class="lang-picker">
-        <button class="lang-btn active" onclick="updateLang('fr')">🇫🇷 FR</button>
-        <button class="lang-btn" onclick="updateLang('ua')">🇺🇦 UA</button>
-        <button class="lang-btn" onclick="updateLang('pl')">🇵🇱 PL</button>
+        <button class="lang-btn active" id="btn-fr" onclick="setLang('fr')">🇫🇷 FR</button>
+        <button class="lang-btn" id="btn-ua" onclick="setLang('ua')">🇺🇦 UA</button>
+        <button class="lang-btn" id="btn-pl" onclick="setLang('pl')">🇵🇱 PL</button>
     </div>
 
     <div class="card">
-        <h3 id="t-exp">🛁 Expertise</h3>
-        <div class="grid">
-            <div class="service s1">🚿<br><span id="s1">Salle de Bain</span></div>
-            <div class="service s2">🚰<br><span id="s2">Plomberie</span></div>
-            <div class="service s3">🍳<br><span id="s3">Cuisine</span></div>
-            <div class="service s4">🧱<br><span id="s4">Carrelage</span></div>
+        <h3 id="sec1-title">🛁 Expertise</h3>
+        <div class="services-grid">
+            <div class="service-item"><span class="service-icon">🚿</span><span class="service-name" id="s1">Salle de Bain</span></div>
+            <div class="service-item"><span class="service-icon">🚰</span><span class="service-name" id="s2">Plomberie</span></div>
+            <div class="service-item"><span class="service-icon">🍳</span><span class="service-name" id="s3">Cuisine</span></div>
+            <div class="service-item"><span class="service-icon">🧱</span><span class="service-name" id="s4">Carrelage</span></div>
         </div>
     </div>
 
     <div class="card">
-        <h3 id="t-met">🛠️ Ma Méthode</h3>
-        <div class="grid" id="steps-box">
-            <div class="step"><span class="num">1</span><br>Devis gratuit</div>
-            <div class="step"><span class="num">2</span><br>Intervention</div>
-            <div class="step"><span class="num">3</span><br>Qualité</div>
-            <div class="step"><span class="num">4</span><br>Garantie</div>
+        <h3 id="steps-title">🛠️ Ma méthode</h3>
+        <div class="steps-grid" id="steps-container"></div>
+    </div>
+
+    <div class="card">
+        <h3 id="sec2-title">📍 Zone d'intervention</h3>
+        <div class="badge-list">
+            <span class="badge">Paris (75)</span><span class="badge">77</span><span class="badge">78</span><span class="badge">91</span>
+            <span class="badge">92</span><span class="badge">93</span><span class="badge">94</span><span class="badge">95</span>
         </div>
     </div>
 
     <div class="card">
-        <h3 id="t-rev">⭐ Avis</h3>
-        <div id="rev-box">
-            <div class="review"><span class="rev-name">Jean-Pierre L.</span><br><span class="stars">⭐⭐⭐⭐⭐</span><p class="rev-text">"Travail impeccable. Je recommande."</p></div>
-            <div class="review"><span class="rev-name">Marc D.</span><br><span class="stars">⭐⭐⭐⭐⭐</span><p class="rev-text">"Très réactif pour une urgence."</p></div>
-        </div>
+        <h3 id="reviews-title">⭐ Avis</h3>
+        <div id="reviews-container"></div>
     </div>
 
-    <div class="card" style="background: #e8f5e9; text-align: center; border: none;">
-        <p id="t-wa-text" style="font-weight:bold; color:#2e7d32; margin-bottom:15px;">Devis gratuit via WhatsApp</p>
-        <a href="https://wa.me/33782006584" class="btn-wa" id="wa-link">💬 WhatsApp</a>
+    <div class="card" style="text-align: center; border: none; background: rgba(37, 211, 102, 0.08);">
+        <p id="contact-text" style="margin-bottom: 12px; font-size: 13px;"><strong>Devis gratuit via WhatsApp</strong></p>
+        <a href="https://wa.me/33782006584" class="btn-whatsapp" id="wa-btn">💬 WhatsApp</a>
+    </div>
+</div>
+
+<footer>&copy; 2026 EXPERT RÉNOVATION PARIS</footer>
+
+<script>
+    const translations = {
+        fr: {
+            subtitle: "Plomberie & Rénovation",
+            sec1: "🛁 Expertise",
+            s: ["Salle de Bain", "Plomberie", "Cuisine", "Carrelage"],
+            stepsTitle: "🛠️ Méthode",
+            steps: ["Devis gratuit", "Intervention rapide", "Travail soigné", "Garantie"],
+            sec2: "📍 Zones",
+            revTitle: "⭐ Avis",
+            revs: [{n:"Jean-Pierre L.",t:"Travail impeccable."}, {n:"Marc D.",t:"Très réactif."}],
+            wa: "💬 WhatsApp"
+        },
+        ua: {
+            subtitle: "Сантехніка та Ремонт",
+            sec1: "🛁 Послуги",
+            s: ["Ванна", "Сантехніка", "Кухня", "Плитка"],
+            stepsTitle: "🛠️ Як я працюю",
+            steps: ["Безкоштовний кошторис", "Швидкий виїзд", "Охайна робота", "Гарантія"],
+            sec2: "📍 Райони",
+            revTitle: "⭐ Відгуки",
+            revs: [{n:"Микола",t:"Дуже задоволений."}, {n:"Андрій",t:"Швидко приїхав."}],
+            wa: "💬 WhatsApp"
+        },
+        pl: {
+            subtitle: "Hydraulika i Remonty",
+            sec1: "🛁 Usługi",
+            s: ["Łazienka", "Hydraulika", "Kuchnia", "Płytki"],
+            stepsTitle: "🛠️ Metoda",
+            steps: ["Darmowa wycena", "Szybki dojazd", "Czysta praca", "Gwarancja"],
+            sec2: "📍 Gdzie",
+            revTitle: "⭐ Opinie",
+            revs: [{n:"Jan K.",t:"Polecam fachowca."}, {n:"Piotr S.",t:"Szybko i profesjonalnie."}],
+            wa: "💬 WhatsApp"
+        }
+    };
+
+    function setLang(lang) {
+        // Оновлення активної кнопки
+        document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+        const activeBtn = document.getElementById('btn-' + lang);
+        if (activeBtn) activeBtn.classList.add('active');
+
+        const t = translations[lang];
+
+        // Оновлення текстів
+        document.getElementById('main-subtitle').innerText = t.subtitle;
+        document.getElementById('sec1-title').innerText = t.sec1;
+        document.getElementById('s1').innerText = t.s[0];
+        document.getElementById('s2').innerText = t.s[1];
+        document.getElementById('s3').innerText = t.s[2];
+        document.getElementById('s4').innerText = t.s[3];
+        document.getElementById('steps-title').innerText = t.stepsTitle;
+        document.getElementById('sec2-title').innerText = t.sec2;
+        document.getElementById('reviews-title').innerText = t.revTitle;
+        document.getElementById('wa-btn').innerText = t.wa;
+
+        // Оновлення етапів
+        const stepsCont = document.getElementById('steps-container');
+        if (stepsCont) {
+            stepsCont.innerHTML = '';
+            t.steps.forEach((step, i) => {
+                stepsCont.innerHTML += `
+                    <div class="step-box">
+                        <span class="step-num-circle">0${i+1}</span>
+                        <div class="step-title">${step}</div>
+                    </div>`;
+            });
+        }
+
+        // Оновлення відгуків
+        const revContainer = document.getElementById('reviews-container');
+        if (revContainer) {
+            revContainer.innerHTML = '';
+            t.revs.forEach(r => {
+                revContainer.innerHTML += `
+                    <div class="review">
+                        <span class="review-name">${r.n}</span>
+                        <span class="review-stars">⭐⭐⭐⭐⭐</span>
+                        <p class="review-text">"${r.t}"</p>
+                    </div>`;
+            });
+        }
+    }
+
+    // Запуск після повного завантаження сторінки
+    window.onload = function() {
+        setLang('fr');
+    };
+</script>
+</body>
+</html>
